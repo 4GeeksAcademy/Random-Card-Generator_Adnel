@@ -6,36 +6,90 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = () => {
-  //write your code here
-  document.querySelector("#btn").addEventListener("click", () => {
-    document.querySelector("#excuse").innerHTML = generateExcuse();
-  });
+  document.querySelector(".card").classList.add(generateRandomSuit());
+  document.querySelector(".card").innerHTML = generateRandomNumber();
 };
 
-let generateExcuse = () => {
-  let who = ["The dog", "My grandma", "His turtle", "My bird"];
-  let action = ["ate", "peed on", "crushed", "broke"];
-  let what = ["my homework", "the keys", "the car"];
-  let when = [
-    "before the class",
-    "right on time",
-    "when I finished",
-    "during my lunch",
-    "while I was praying"
+// This randomizes a card every 10 seconds
+window.setInterval(function() {
+  document.querySelector(".card").classList.add(generateRandomSuit());
+  document.querySelector(".card").innerHTML = generateRandomNumber();
+}, 10000);
+
+// This button generates a new card without reloading the page
+let button = document.getElementById("changeCard");
+
+button.addEventListener("click", function() {
+  // Warning: Suits are not changing randomly need to fix
+  document.querySelector(".card").classList.add(generateRandomSuit());
+  document.querySelector(".card").innerHTML = generateRandomNumber();
+});
+
+// Changes width of card through user input
+let widthInput = document.getElementById("widthInput");
+
+function changeWidth() {
+  const newWidth = widthInput.value.trim(); // Get the input value and remove leading/trailing spaces
+
+  if (newWidth !== "") {
+    // Only add a task if it's not empty
+    document.querySelector(".card").style.width = newWidth + "px";
+    widthInput.value = ""; // Clear the input field
+  }
+}
+
+widthInput.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    changeWidth();
+  }
+});
+
+// Changes height of card through user input
+let heightInput = document.getElementById("heightInput");
+
+function changeHeight() {
+  const newHeight = heightInput.value.trim(); // Get the input value and remove leading/trailing spaces
+
+  if (newHeight !== "") {
+    // Only add a task if it's not empty
+    document.querySelector(".card").style.height = newHeight + "px";
+    heightInput.value = ""; // Clear the input field
+  }
+}
+
+heightInput.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    changeHeight();
+  }
+});
+
+// This function generates card number
+function generateRandomNumber() {
+  let numbers = [
+    "A",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K"
   ];
 
-  let whoIndex = Math.floor(Math.random() * who.length);
-  let actionIndex = Math.floor(Math.random() * action.length);
-  let whatIndex = Math.floor(Math.random() * what.length);
-  let whenIndex = Math.floor(Math.random() * when.length);
+  let indexNumbers = Math.floor(Math.random() * numbers.length);
 
-  return (
-    who[whoIndex] +
-    " " +
-    action[actionIndex] +
-    " " +
-    what[whatIndex] +
-    " " +
-    when[whenIndex]
-  );
-};
+  return numbers[indexNumbers];
+}
+
+// This function generates card symbol
+function generateRandomSuit() {
+  let suit = ["diamond", "spade", "heart", "club"];
+  let indexSuit = Math.floor(Math.random() * suit.length);
+
+  return suit[indexSuit];
+}

@@ -1,22 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-      crossorigin="anonymous"
-    />
-    <link rel="shortcut icon" href="./4geeks.ico" />
+    <title>Random Card Generator Adnel</title>
   </head>
+
   <body>
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">OMG you will not believe me but...</h1>
-      <h2 id="excuse" class="mt-5">My dog ate my homework</h2>
-      <button id="btn" class="mt-4">Generate an excuse</button>
+    <div class="container">
+      <div class="card spade mb-3 mt-5">
+        <span class="number">7</span>
+      </div>
+
+      <div class="text-center">
+        <div class="mb-3">
+          <button type="button" id="changeCard" class="btn btn-primary">
+            Shuffle
+          </button>
+        </div>
+        <div>
+          <input
+            class="form-control"
+            id="widthInput"
+            placeholder="Custom width"
+          />
+          <input
+            class="form-control"
+            id="heightInput"
+            placeholder="Custom height"
+          />
+        </div>
+      </div>
     </div>
   </body>
 </html>
