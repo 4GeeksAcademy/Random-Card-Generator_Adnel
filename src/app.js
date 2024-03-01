@@ -6,23 +6,30 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = () => {
+  randomize();
+};
+
+// This function pushes random suits and numbers to the card
+function randomize() {
+  let suits = ["diamond", "spade", "heart", "club"];
+  for (const suit of suits) {
+    document.querySelector(".card").classList.remove(suit);
+  }
+
   document.querySelector(".card").classList.add(generateRandomSuit());
   document.querySelector(".card").innerHTML = generateRandomNumber();
-};
+}
 
 // This randomizes a card every 10 seconds
 window.setInterval(function() {
-  document.querySelector(".card").classList.add(generateRandomSuit());
-  document.querySelector(".card").innerHTML = generateRandomNumber();
+  randomize();
 }, 10000);
 
 // This button generates a new card without reloading the page
 let button = document.getElementById("changeCard");
 
 button.addEventListener("click", function() {
-  // Warning: Suits are not changing randomly need to fix
-  document.querySelector(".card").classList.add(generateRandomSuit());
-  document.querySelector(".card").innerHTML = generateRandomNumber();
+  randomize();
 });
 
 // Changes width of card through user input
@@ -32,7 +39,7 @@ function changeWidth() {
   const newWidth = widthInput.value.trim(); // Get the input value and remove leading/trailing spaces
 
   if (newWidth !== "") {
-    // Only add a task if it's not empty
+    // Only add a width if it's not empty
     document.querySelector(".card").style.width = newWidth + "px";
     widthInput.value = ""; // Clear the input field
   }
@@ -51,7 +58,7 @@ function changeHeight() {
   const newHeight = heightInput.value.trim(); // Get the input value and remove leading/trailing spaces
 
   if (newHeight !== "") {
-    // Only add a task if it's not empty
+    // Only add a height if it's not empty
     document.querySelector(".card").style.height = newHeight + "px";
     heightInput.value = ""; // Clear the input field
   }
